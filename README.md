@@ -1,3 +1,6 @@
+# Rust book
+My notes and code for working through the [Rust book](https://doc.rust-lang.org/book/ch20-02-multithreaded.html) 🦀
+
 # Chapter 1
 * `fn main()` is where execution starts in all Rust programs
 * `!` means using a macro
