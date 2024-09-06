@@ -64,4 +64,13 @@ My notes and code for working through the [Rust book](https://doc.rust-lang.org/
 * Ownership is a set of rules that govern how a Rust program manages memory. If any of the rules are violated, the program won't compile.
 * Main purpose of ownership is to manage heap data (as opposed to stack data)
 * Ownership rules: Each value in Rust has an owner, there can only be one owner at a time, when the owner goes out of scope the value will be dropped
-* 
+* String datatype lives on the heap, and so good example for explaining ownership in Rust. Also note, `String` is different to `string` literals. There are two different types of string in Rust.
+* We can't allocate a dynamic piece of memory into the binary we compile, so it must allocated on the heap at runtime. We need a way of returning this mmeory to the allocator when we're done with our `String`.
+* Rust takes a different approach to garbage collectors and letting programmers free and allocate, which is error-prone. The memory is automatically returned once the variable that owns it goes out of scope.
+* Rust calls `drop` (a special function) behind the scenes
+* Deep copies vs shallow copies. Because Rust also invalidates the first variable it is called a `move` instead of shallow copy.
+* `clone()` arbitrary code (however it is implemented) is being executed and it could be expensive
+* Types stored on stack, we can implement the `Copy` trait. This means variables won't `move`, but are copied. Making them valid after assignment to another variable (unlike heap allocated types)
+* When sending a variable (which could be heap or stack based) to a function, just like assinging to variables `move` or `copy` is called. So once you pass a variable to a function and it gets `move`d then you cannot reference that variable after the call to the function.
+## References and borrowing
+* Rather than returning a tuple with the value you pass in so it is not `drop`ed we can use a reference `&`
